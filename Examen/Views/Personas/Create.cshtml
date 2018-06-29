@@ -1,0 +1,80 @@
+﻿@model Examen.Models.Personas
+
+@{
+    // ViewBag.Title = "Create";
+    Layout = null;
+}
+
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <p>Inroduzca los datos de la persona a crear</p>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.Nombre, htmlAttributes: new { @class = "control-label col-md-2"} )
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Nombre, new { htmlAttributes = new { @class = "form-control", maxlength = "50"} })
+                @Html.ValidationMessageFor(model => model.Nombre, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Apellido_Paterno, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Apellido_Paterno, new { htmlAttributes = new { @class = "form-control", maxlength = "60" } })
+                @Html.ValidationMessageFor(model => model.Apellido_Paterno, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Apellido_Materno, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Apellido_Materno, new { htmlAttributes = new { @class = "form-control", maxlength = "60" } })
+                @Html.ValidationMessageFor(model => model.Apellido_Materno, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.CURP, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.CURP, new { htmlAttributes = new { @class = "form-control", maxlength = "18" } })
+                @Html.ValidationMessageFor(model => model.CURP, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-lg-4">
+
+            </div>
+            <div class="col-lg-2">
+                <p><a class="btn btn-sm btn-danger" href="/Personas/ListaPersonas">Cancelar</a></p>
+            </div>
+            <div class="col-lg-2">
+                
+                <button id="button1" class="btn btn-sm btn-success">Guardar</button>
+            </div>
+            <div class="col-lg-4">
+
+            </div>
+        </div>
+    </div>
+}
+  
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+
+<script>
+    $('#button1').submit(function (e) {
+        e.preventDefault();
+       
+        $('#modal-content').modal('hide');
+        return false;
+    });
+
+  
+</script>

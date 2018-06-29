@@ -1,0 +1,58 @@
+﻿@model Examen.Models.Personas
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Eliminar Persona</h2>
+<hr />
+<h4><strong>¿Está seguro que desea eliminar esta persona?</strong></h4>
+<hr />
+<div>
+
+
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Nombre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Apellido_Paterno)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Apellido_Paterno)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Apellido_Materno)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Apellido_Materno)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CURP)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CURP)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Eliminar definitivamente" class="btn btn-danger" /> |
+            @Html.ActionLink("Regresar a la lista", "ListaPersonas")
+        </div>
+    }
+</div>

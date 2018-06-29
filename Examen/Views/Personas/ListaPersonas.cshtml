@@ -1,0 +1,74 @@
+﻿@model IEnumerable<Examen.Models.Personas>
+
+
+
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Lista de Personas</h2>
+
+<p>
+<p><a id="btnNuevo" data-toggle="modal" href="#myModal" class="btn btn-primary btn-sm">Crear persona +</a></p>
+</p>
+
+<table class="table">
+    <thead class="thead-dark">
+        <tr>
+            <th scope="col">Nombre</th>
+            <th scope="col">Apellido Paterno</th>
+            <th scope="col">Apellido Materno</th>
+            <th scope="col">CURP</th>
+            <th scope="col">Opciones</th>
+        </tr>
+    </thead>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nombre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Apellido_Paterno)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Apellido_Materno)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CURP)
+            </td>
+            <td>
+                @Html.ActionLink("Editar", "Edit", new { id = item.ID }) |
+                @Html.ActionLink("Eliminar", "Delete", new { id = item.ID })
+            </td>
+        </tr>
+    }
+
+</table>
+
+<div id="myModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                <h4 class="modal-title" id="myModalLabel">Crear persona</h4>
+            </div>
+            <div class="modal-body">
+                <div id="modal-content">
+                    Cargando...
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+@section scripts
+{
+    <script src="~/Scripts/js/Call_modals.js"></script>
+}
